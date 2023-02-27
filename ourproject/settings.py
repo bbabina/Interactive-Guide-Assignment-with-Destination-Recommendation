@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'login','registration','destination',
     'ratinghome','blog',
     'main',
-    'chatbox',
+    'chatbox.apps.ChatboxConfig',
     'recommender',
     
 ]

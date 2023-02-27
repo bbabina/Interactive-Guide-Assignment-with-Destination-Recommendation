@@ -8,6 +8,8 @@ urlpatterns = [
      path('contactUs', views.contactusview, name="contactus"),
     ## path('', views.mainpageview, name="mainpage"),
      path('blogs/', include('blog.urls')),
+     path('chatbox/', include('chatbox.urls')),
+
      path('', include('destination.urls')),
 path('profile/', views.profilepage, name='profilepage'),
 path('aboutUs/',views.aboutus,name='aboutus'),

@@ -110,3 +110,8 @@ def guideRegister(request):
             return redirect('login')
 
     return render(request, 'userRegister.html')
+
+
+@method_decorator(login_required, name='dispatch')
+class chatboxview(generic.ListView):
+    template_name= 'chatbox/mains.html'
