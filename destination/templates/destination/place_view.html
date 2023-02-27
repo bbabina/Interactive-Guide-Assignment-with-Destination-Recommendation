@@ -330,9 +330,20 @@ label {
     </div>
   </div>
     {% endfor %}
+  </div>
 </div>
+
+    <div class="col-12 pb-4 pt-4">
+      <h3>Availlable Guides:</h3>
+      {% for guide in guides %}
+      <div class="row">
+      <div class="text-justify darker mt-4 col-12"> <img src="{{ guide.profile_pic.url }}" alt="" class="rounded-circle" width="80" height="80">
+          <h4>{{ guide.user.username }}</h4> 
+      </div>
     </div>
-  
+      {% endfor %}
+    </div>
+
 </div>
 </section>
 {% endblock %}
