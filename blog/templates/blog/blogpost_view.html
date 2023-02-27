@@ -1,0 +1,146 @@
+{% extends "main.html" %}
+{% block title %}
+{{object.title}} 
+{% endblock title %}
+
+{% block myblock %}
+<style>
+  fieldset {
+  border: 0;
+  background: #222;
+  border-radius: 1px;
+  padding: 1em 1.5em 0.9em;
+  margin: 1em auto;
+ 
+}
+.star-cb-group {
+  /* remove inline-block whitespace */
+  font-size: 0;
+  /* flip the order so we can use the + and ~ combinators */
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  /* the hidden clearer */
+}
+.star-cb-group * {
+  font-size: 1rem;
+}
+.star-cb-group > input {
+  display: none;
+}
+.star-cb-group > input + label {
+  /* only enough room for the star */
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 9999px;
+  width: 1em;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size:40px;
+}
+.star-cb-group > input + label:before {
+  display: inline-block;
+  text-indent: -9999px;
+  content: "☆";
+  color: #888;
+}
+.star-cb-group > input:checked ~ label:before, .star-cb-group > input + label:hover ~ label:before, .star-cb-group > input + label:hover:before {
+  content: "★";
+  color: #e52;
+  text-shadow: 0 0 1px #333;
+}
+.star-cb-group > .star-cb-clear + label {
+  text-indent: -9999px;
+  width: .5em;
+  margin-left: .5em;
+}
+.star-cb-group > .star-cb-clear + label:before {
+  width: .5em;
+}
+.star-cb-group:hover > input + label:before {
+  content: "☆";
+  color: #888;
+  text-shadow: none;
+}
+.star-cb-group:hover > input + label:hover ~ label:before, .star-cb-group:hover > input + label:hover:before {
+  content: "★";
+  color: #e52;
+  text-shadow: 0 0 1px #333;
+}
+
+
+</style>
+
+<style>
+  .mycontainer{
+    padding-top:50px;
+  }
+
+  
+</style>
+
+
+
+{% endblock myblock %}
+{% block content %}
+
+
+<section class="mycontainer">
+<section class="inner-page">
+  
+    <section id="events"  class="events" style="background-image: url({{object.thumbnail.url}}) ">
+      <div class="container" data-aos="fade-up">
+    
+        <div class="section-title">
+          <p style = " font-size: 50px;">{{object.title}}</p>
+        </div>
+    
+        <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper" >
+  
+  
+           
+  {% for imag in object.blogimages_set.all %} 
+  
+  <div class="swiper-slide">
+    <div class="row event-item">
+     
+        <img src="{{imag.image.url}}" class="img-fluid" alt="">
+    
+    </div>
+  </div>
+  
+  {% endfor %}
+</div>
+<div class="swiper-pagination"></div>
+</div>
+
+</div>
+</section>
+
+ 
+
+
+
+  <div class="container" data-aos="fade-up">
+
+    <p style="padding-top:20px;"> <strong>Author:</strong> <br>{{ object.author }}</p> 
+    <p style="padding-top:10px;"> <strong>Posted on:</strong> <br>{{ object.created_date }}</p> 
+  <p style="padding:10px;">{{ object.description | linebreaks }}</p>
+</div>
+</section>
+
+ 
+  
+</section>
+{% endblock %}
+
+
+
+
+
+{% block myscript %}
+<script>
+  
+ 
+</script>
+{% endblock myscript %}
