@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile, Preferences
+from destination.models import Places
 
 class UsercreateForm(UserCreationForm):
     
@@ -14,10 +15,15 @@ class UsercreateForm(UserCreationForm):
 
 
 class profileform(ModelForm):
-    
+    place = forms.ModelChoiceField(queryset=Places.objects.all(), widget=forms.Select)
     class Meta:
         model= Profile
-        fields= ['middle_name','sex','age','phone_number','nationality','profile_pic']
+        fields= ['middle_name','sex','age','phone_number','nationality','profile_pic','is_guide','place']
+        labels={
+            'is_guide': 'Become a guide',
+            'place':'Select destination'
+        }
+       
        
         
 class userupdateform(ModelForm):

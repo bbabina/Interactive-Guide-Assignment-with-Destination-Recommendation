@@ -1,5 +1,3 @@
-
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -158,8 +156,11 @@ body{
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-4"><label class="labels">Phone number</label>{{p_form.phone_number}}</div>
-                                <div class="col-md-4"><label class="labels">Email</label>{{form.email}}</div>
                                 <div class="col-md-4"><label class="labels">Change profile picture</label> <input type="file" name="pp"/></div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-4"><label class="labels">want to be guide?</label>{{p_form.is_guide}}</div>
+                                <div class="col-md-4"><label class="labels">Select your area</label>{{p_form.place}}</div>                               
                             </div>
 
                             

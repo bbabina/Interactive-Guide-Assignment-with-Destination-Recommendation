@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from recommender.views import hybrid_recommender
 from ratinghome.models import Rateinfo
+from registration.models import Profile
 
 
 @method_decorator(login_required, name='dispatch')
@@ -59,10 +60,11 @@ class placelistview(generic.ListView):
 @login_required
 def placedetailview(request,pk):
     place=get_object_or_404(Places,id=pk)
+    guide= Profile.objects.filter( place=pk)
     comment = request.POST.get('msg')
     if comment== None or len(comment)==0:
         data=Places.objects.get(id=pk)         
-        return render(request,'destination/place_view.html',{'data':data }) 
+        return render(request,'destination/place_view.html',{'data':data , 'guides':guide}) 
 
     else :
         data= Comment()
@@ -71,7 +73,7 @@ def placedetailview(request,pk):
         data.comment_body = comment
         data.save()
         data=Places.objects.get(id=pk)         
-        return render(request,'destination/place_view.html',{'data':data }) 
+        return render(request,'destination/place_view.html',{'data':data, 'guides':guide }) 
 
 
 @login_required
