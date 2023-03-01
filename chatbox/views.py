@@ -140,6 +140,14 @@ def room(request, pk):
         return redirect ('room', pk=room.id)
 
     context = {'room': room, 'room_messages': room_messages, 'participants':participants}
+    return render(request, 'chatbox/home.html', context )
+
+
+def room(request, pk):
+    room = Room.objects.get(id=pk)
+    room_messages = room.message_set.all().order_by('-created')
+
+    context = {'room': room, 'room_messages': room_messages}
     return render(request, 'chatbox/room.html', context)
             
 
@@ -209,6 +217,14 @@ def createRoom(request):
         )
         return redirect('index')
     context={'form': form, 'topics':topics}
+    if request.method == 'POST':
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        
+        # print(request.POST)
+    context={'form': form}
     return render(request, 'chatbox/room_form.html', context)
 
 
