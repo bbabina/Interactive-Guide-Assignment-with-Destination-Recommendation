@@ -19,6 +19,9 @@ def contactusview(request):
 def mainpageview(request):
     return render(request ,"main.html" ) 
 
+def redirectview(request):
+    return render(request ,"mainpage.html" ) 
+
 @login_required 
 def profilepage(request):
     return render(request, 'profilehome.html')
@@ -73,45 +76,3 @@ class Searchplace(generic.ListView):
         
         
     
-# def guideLogin(request):
-#     if request.method == 'POST':
-#         username = request.POST['username']
-#         password = request.POST['password']
-
-#         user = authenticate(request, username=username, password=password)
-#         if user is not None:
-#             login(request, user)
-#             return redirect('home')
-#         else:
-#             return HttpResponse("Username or Password is incorrect")
-
-#         # print(username, password)
-
-#         # user = User.objects.filter(username=username)
-#         # if user.count() == 0:
-
-#     return render(request, 'login.html')
-
-
-# def guideRegister(request):
-
-#     if request.method == "POST":
-#         username = request.POST.get("username")
-#         email = request.POST.get("email")
-#         password = request.POST.get("password")
-#         confirmpassword = request.POST.get("confirmpassword")
-
-#         if password != confirmpassword:
-#             return HttpResponse("Your password does not match")
-#         else:
-#             my_user = User.objects.create_user(username, email, password)
-#             # my_user.is_active = True
-#             my_user.save()
-#             return redirect('login')
-
-#     return render(request, 'userRegister.html')
-
-
-# @method_decorator(login_required, name='dispatch')
-# class chatboxview(generic.ListView):
-#     template_name= 'chatbox/mains.html'

@@ -1,7 +1,13 @@
 from django.urls import path
 from . import views
+from django.urls import include
+
+
+
 
 urlpatterns = [
+        # path('main/', include('main.urls')),
+
     path('login/', views.loginPage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
     path('register/', views.registerPage, name="register"),
@@ -20,4 +26,8 @@ urlpatterns = [
 
     path('topics/',views.topicsPage, name="topics"),
     path('activity/',views.activityPage, name="activity"),
+
+       
+    # path('profile/user_profile_edit/', profile_editpage ,name='edit_profile'),
+
 ]

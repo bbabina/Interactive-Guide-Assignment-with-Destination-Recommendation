@@ -12,6 +12,7 @@ urlpatterns = [
      path('', include('destination.urls')),
 path('profile/', views.profilepage, name='profilepage'),
 path('aboutUs/',views.aboutus,name='aboutus'),
+path('mainpage1/',views.redirectview,name='mainpage1'),
 path('map/',views.maps,name='maps'),
 path('profile/user_profile_edit/', profile_editpage ,name='edit_profile'),
 path('places/', views.Searchplace.as_view() ,name='places'),
