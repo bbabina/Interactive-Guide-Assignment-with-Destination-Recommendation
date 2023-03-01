@@ -338,7 +338,9 @@ label {
       {% for guide in guides %}
       <div class="row">
       <div class="text-justify darker mt-4 col-12"> <img src="{{ guide.profile_pic.url }}" alt="" class="rounded-circle" width="80" height="80">
-          <h4>{{ guide.user.username }}</h4> 
+          
+        <a href="{% url 'index' %}"><h4>{{ guide.user.username }}</h4></a>
+
       </div>
     </div>
       {% endfor %}

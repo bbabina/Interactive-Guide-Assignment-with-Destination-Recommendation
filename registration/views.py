@@ -21,8 +21,6 @@ def profile_editpage(request):
         
         img =  request.FILES.get('pp')
         
-
-        
         if user_form.is_valid() and profile_form.is_valid():
             
             if img is not None:
@@ -56,14 +54,13 @@ def accountsetting(request):
             pf.save()
             pref.save()  
             return redirect('placelist')
-        
-
-    
+            
     else:
         form=userupdateform(instance=request.user, prefix = 'form')
         profile_form=profileform(prefix = 'profile_form')
         preference_form=preferenceform(prefix = 'preference_form')
     return render(request, 'preferencesinfo.html',{'f':form,'p':profile_form,'pr':preference_form})    
+
 
 def registerpage(request):
     if request.method=="POST":
@@ -73,9 +70,6 @@ def registerpage(request):
             u_name = user_form.cleaned_data.get('username')
             messages.success(request,f'Account created successfully for {u_name} !!')
             return redirect('login')
-
-                
-
     else:
         user_form=UsercreateForm()       
     return render(request,'registeruser.html',{'form':user_form})        

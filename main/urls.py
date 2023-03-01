@@ -6,7 +6,7 @@ from registration.views import profile_editpage
 
 urlpatterns = [
      path('contactUs', views.contactusview, name="contactus"),
-    ## path('', views.mainpageview, name="mainpage"),
+     path('', views.mainpageview, name="mainpage"),
      path('blogs/', include('blog.urls')),
 
      path('', include('destination.urls')),
