@@ -19,8 +19,8 @@ def contactusview(request):
 def mainpageview(request):
     return render(request ,"main.html" ) 
 
-def redirectview(request):
-    return render(request ,"mainpage.html" ) 
+# def redirectview(request):
+#     return render(request ,"mainpage.html" ) 
 
 @login_required 
 def profilepage(request):

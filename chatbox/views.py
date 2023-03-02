@@ -24,7 +24,7 @@ from .forms import RoomForm, UserForm
 def loginPage(request):
     page = 'login'
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('index')
 
     if request.method == 'POST':
         email = request.POST.get('email').lower()
