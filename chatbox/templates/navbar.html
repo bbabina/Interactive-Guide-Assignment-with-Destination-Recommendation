@@ -2,10 +2,15 @@
 <header class="header header--loggedIn">
     <div class="container">
 
-        {% comment %} <a href="#">Back</a> {% endcomment %}
+        {% comment %} <a href="#"></a> {% endcomment %}
 
         <a href="{% url 'index' %}" class="header__logo">
-            <img src="{% static 'images/logo.svg' %}" />
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32">
+                <title>arrow-left</title>
+                <path
+                    d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+                </path>
+            </svg>
             <h1>TravelBuddy</h1>
         </a>
         <form class="header__search" method="GET" action="{% url 'index' %}">
@@ -56,7 +61,7 @@
                         </path>
                     </svg>
                     Settings</a>
-                    
+
                 <a href="{% url 'logout' %}" class="dropdown-link"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                         width="32" height="32" viewBox="0 0 32 32">
                         <title>sign-out</title>

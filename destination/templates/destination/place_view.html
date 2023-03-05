@@ -1,87 +1,99 @@
 {% extends "main.html" %}
 
 {% block title %}
-{{data.name}} : Details 
+{{data.name}} : Details
 {% endblock title %}
 
 
 {% block myblock %}
 <style>
   fieldset {
-  border: 0;
-  background: #222;
-  border-radius: 1px;
-  padding: 1em 1.5em 0.9em;
-  margin: 1em auto;
- 
-}
-.star-cb-group {
-  /* remove inline-block whitespace */
-  font-size: 0;
-  /* flip the order so we can use the + and ~ combinators */
-  unicode-bidi: bidi-override;
-  direction: rtl;
-  /* the hidden clearer */
-}
-.star-cb-group * {
-  font-size: 1rem;
-}
-.star-cb-group > input {
-  display: none;
-}
-.star-cb-group > input + label {
-  /* only enough room for the star */
-  display: inline-block;
-  overflow: hidden;
-  text-indent: 9999px;
-  width: 1em;
-  white-space: nowrap;
-  cursor: pointer;
-  font-size:40px;
-}
-.star-cb-group > input + label:before {
-  display: inline-block;
-  text-indent: -9999px;
-  content: "☆";
-  color: #888;
-}
-.star-cb-group > input:checked ~ label:before, .star-cb-group > input + label:hover ~ label:before, .star-cb-group > input + label:hover:before {
-  content: "★";
-  color: #e52;
-  text-shadow: 0 0 1px #333;
-}
-.star-cb-group > .star-cb-clear + label {
-  text-indent: -9999px;
-  width: .5em;
-  margin-left: .5em;
-}
-.star-cb-group > .star-cb-clear + label:before {
-  width: .5em;
-}
-.star-cb-group:hover > input + label:before {
-  content: "☆";
-  color: #888;
-  text-shadow: none;
-}
-.star-cb-group:hover > input + label:hover ~ label:before, .star-cb-group:hover > input + label:hover:before {
-  content: "★";
-  color: #e52;
-  text-shadow: 0 0 1px #333;
-}
+    border: 0;
+    background: #222;
+    border-radius: 1px;
+    padding: 1em 1.5em 0.9em;
+    margin: 1em auto;
 
+  }
 
+  .star-cb-group {
+    /* remove inline-block whitespace */
+    font-size: 0;
+    /* flip the order so we can use the + and ~ combinators */
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    /* the hidden clearer */
+  }
+
+  .star-cb-group * {
+    font-size: 1rem;
+  }
+
+  .star-cb-group>input {
+    display: none;
+  }
+
+  .star-cb-group>input+label {
+    /* only enough room for the star */
+    display: inline-block;
+    overflow: hidden;
+    text-indent: 9999px;
+    width: 1em;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 40px;
+  }
+
+  .star-cb-group>input+label:before {
+    display: inline-block;
+    text-indent: -9999px;
+    content: "☆";
+    color: #888;
+  }
+
+  .star-cb-group>input:checked~label:before,
+  .star-cb-group>input+label:hover~label:before,
+  .star-cb-group>input+label:hover:before {
+    content: "★";
+    color: #e52;
+    text-shadow: 0 0 1px #333;
+  }
+
+  .star-cb-group>.star-cb-clear+label {
+    text-indent: -9999px;
+    width: .5em;
+    margin-left: .5em;
+  }
+
+  .star-cb-group>.star-cb-clear+label:before {
+    width: .5em;
+  }
+
+  .star-cb-group:hover>input+label:before {
+    content: "☆";
+    color: #888;
+    text-shadow: none;
+  }
+
+  .star-cb-group:hover>input+label:hover~label:before,
+  .star-cb-group:hover>input+label:hover:before {
+    content: "★";
+    color: #e52;
+    text-shadow: 0 0 1px #333;
+  }
 </style>
 
 <style>
-  .commentcontainer{
-    padding-top : 20px;
-  }
-  .mycontainer{
-    padding-top:50px;
+  .commentcontainer {
+    padding-top: 20px;
   }
 
-  .merodiv{
-    text-align:right;
+  .mycontainer {
+    padding-top: 50px;
+  }
+
+  .merodiv {
+    text-align: right;
   }
 
 
@@ -96,16 +108,16 @@
     border-width: 1px;
     border-style: solid;
     border-radius: 13px
-}
+  }
 
-#profile {
+  #profile {
     background-color: unset
-}
+  }
 
-#post {
+  #post {
     margin: 8px;
     padding: 8px;
-    
+
     text-align: center;
     background-color: #ecb21f;
     border-color: #a88734 #9c7e31 #846a29;
@@ -114,20 +126,21 @@
     border-style: solid;
     border-radius: 13px;
     width: 25%;
-    
-}
-#profile {
+
+  }
+
+  #profile {
     text-decoration: none;
     color: rgb(224, 219, 219);
     background-color: black
-}
+  }
 
-.comments {
+  .comments {
     margin-top: 5%;
     margin-left: 20px
-}
+  }
 
-.darker {
+  .darker {
     border: 1px solid #ecb21f;
     background-color: black;
     float: right;
@@ -135,9 +148,9 @@
     padding-left: 40px;
     padding-right: 30px;
     padding-top: 10px
-}
+  }
 
-.comment {
+  .comment {
     border: 1px solid rgba(16, 46, 46, 1);
     background-color: rgba(16, 46, 46, 0.973);
     float: left;
@@ -145,73 +158,75 @@
     padding-left: 40px;
     padding-right: 30px;
     padding-top: 10px
-}
+  }
 
-.comment h4,
-.comment span,
-.darker h4,
-.darker span {
+  .comment h4,
+  .comment span,
+  .darker h4,
+  .darker span {
     display: inline
-}
+  }
 
-.comment p,
-.comment span,
-.darker p,
-.darker span {
+  .comment p,
+  .comment span,
+  .darker p,
+  .darker span {
     color: rgb(184, 183, 183)
-}
+  }
 
 
-h4{
-  color: white;
-  
+  h4 {
+    color: white;
+
     font-size: 20px;
-}
-label {
+  }
+
+  label {
     color: rgb(212, 208, 208)
-}
+  }
 
-#align-form {
+  #align-form {
     margin-top: 20px
-}
+  }
 
-.form-group p a {
+  .form-group p a {
     color: white
-}
+  }
 
-#checkbx {
+  #checkbx {
     background-color: black
-}
+  }
 
-#darker img {
+  #darker img {
     margin-right: 15px;
     position: static
-}
+  }
 
 
-.form-control:focus {
-  background-color: rgba(255, 255, 255,0.9);
-}
-.form-group input,
-.form-group textarea {
+  .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .form-group input,
+  .form-group textarea {
     background-color: black;
     border: 1px solid rgba(16, 46, 46, 1);
     border-radius: 12px;
     color: rgb(168, 167, 167);
-}
+  }
 
-.commentform {
-  border: 1px solid #ecb21f;
-   
+  .commentform {
+    border: 1px solid #ecb21f;
+
     border-radius: 5px;
     padding: 20px
-}
+  }
 
-.submitbutton{
-  margin-top: 8px;
+  .submitbutton {
+    margin-top: 8px;
     padding-top: 8px;
     padding-bottom: 8px;
-    
+
     text-align: center;
     background-color: #cda45e;
     border-color: white;
@@ -219,8 +234,26 @@ label {
     border-width: 1px;
     border-style: solid;
     border-radius: 13px;
-   width:25%;
-}
+    width: 25%;
+  }
+
+  .guideRow {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ecb21f;
+    border-radius: 13px;
+    margin: 20px 0 20px 0;
+  }
+
+  .guidelist {
+    display: flex;
+
+    gap: 2rem;
+    padding: 10px 15px;
+    text-transform: capitalize;
+    text-align: center;
+    align-items: center;
+  }
 </style>
 
 
@@ -230,123 +263,127 @@ label {
 
 
 <section class="mycontainer">
-<section class="inner-page">
-  
-    <section id="events"  class="events" style="background-image: url({{data.thumbnail_image.url}}) ">
+  <section class="inner-page">
+
+    <section id="events" class="events" style="background-image: url({{data.thumbnail_image.url}}) ">
       <div class="container" data-aos="fade-up">
-    
+
         <div class="section-title">
-          <p style = " font-size: 50px;">{{data.name}}</p>
+          <p style=" font-size: 50px;">{{data.name}}</p>
         </div>
-    
+
         <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper" >
-  
-  {% if data.destimages_set.all %}
-           
-  {% for imag in data.destimages_set.all %} 
-  
-  <div class="swiper-slide">
-    <div class="row event-item">
-     
-        <img src="{{imag.image.url}}" class="img-fluid" alt="">
-      
-    </div>
-  </div>
-  
-  {% endfor %}
+          <div class="swiper-wrapper">
 
-  {% endif %}
-</div>
-<div class="swiper-pagination"></div>
-</div>
+            {% if data.destimages_set.all %}
 
-</div>
-</section>
+            {% for imag in data.destimages_set.all %}
 
- 
+            <div class="swiper-slide">
+              <div class="row event-item">
 
+                <img src="{{imag.image.url}}" class="img-fluid" alt="">
 
+              </div>
+            </div>
 
-  <div class="container" data-aos="fade-up">
+            {% endfor %}
 
-    <p style="padding-top:20px;"> <strong>Address:</strong> <br>{{ data.address }}</p> 
-  
-  <p><strong>Description:</strong> {{ data.descrption | linebreaks }}</p>
-</div>
-</section>
-
-<div class="container" data-aos="fade-up">
-<h2 style="text-align: right">HOW DO YOU RATE THIS PLACE?</h2>
-<form method="POST" action="{% url 'rate-place' data.id %}" class="merodiv">
-{% csrf_token %}
-<!--rating the place with star   -->
-<div class="star-cb-group">
-  <input type="radio" name="rate" id="rating5" value="5" required/><label for="rating5" title="5"></label>
-  <input type="radio" name="rate" id="rating4" value="4" required/><label for="rating4" title="4"></label>
-  <input type="radio" name="rate" id="rating3" value="3" required/><label for="rating3" title="3"></label>
-  <input type="radio" name="rate" id="rating2" value="2" required/><label for="rating2" title="2"></label>
-  <input type="radio" name="rate" id="rating1" value="1" required/><label for="rating1" title="1"></label>
-  
-</div>
-
-<div class="form-group"><button type="submit" class="btn  submitbutton">submit rating</button></div>
-
-</form>
-</div>
-
-
-
-<div class="container commentcontainer" data-aos="fade-up">
- 
-  <a href="{% url 'blogadd' data.id %}" style="font-size: 30px;">ADD BLOG +</a>
-  <div class="row">
-  
-  
-  <div class=" col-12 mt-4">
-    <form id="align-form" method="POST" class="commentform">
-      {% csrf_token %}
-        <div class="form-group">
-            <h4>Leave a comment</h4> <label for="message">Comment:</label> <textarea name="msg" id="msg" cols="30" rows="5" class="form-control" ></textarea>
+            {% endif %}
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
-       
-        <div class="form-group "> <button type="submit" id="post" class="btn">Post Comment</button> </div>
-    </form>
-</div>
-
-  
-
-
-  <div class="col-12 pb-4 pt-4">
-    <h3>Comments:</h3>
-    {% for comment in data.comment_set.all %}
-    <div class="row">
-
- 
-    <div class="text-justify darker mt-4 col-12"> <img src="{{ comment.user.profile.profile_pic.url }}" alt="" class="rounded-circle" width="40" height="40">
-        <h4>{{ comment.user.username }}</h4> <span>- {{comment.created_date|date:"M d, Y"}}</span> <br>
-        <div class="pt-2" style="padding-left: 4px;">
-        <p>{{ comment.comment_body }}</p></div>
-    </div>
-  </div>
-    {% endfor %}
-  </div>
-</div>
-
-    <div class="col-12 pb-4 pt-4">
-      <h3>Availlable Guides:</h3>
-      {% for guide in guides %}
-      <div class="row">
-      <div class="text-justify darker mt-4 col-12"> <img src="{{ guide.profile_pic.url }}" alt="" class="rounded-circle" width="80" height="80">
-          
-        <a href="{% url 'index' %}"><h4>{{ guide.user.username }}</h4></a>
 
       </div>
+    </section>
+
+
+
+
+
+    <div class="container" data-aos="fade-up">
+
+      <p style="padding-top:20px;"> <strong>Address:</strong> <br>{{ data.address }}</p>
+
+      <p><strong>Description:</strong> {{ data.descrption | linebreaks }}</p>
     </div>
+  </section>
+
+  <div class="container" data-aos="fade-up">
+    <h2 style="text-align: right">HOW DO YOU RATE THIS PLACE?</h2>
+    <form method="POST" action="{% url 'rate-place' data.id %}" class="merodiv">
+      {% csrf_token %}
+      <!--rating the place with star   -->
+      <div class="star-cb-group">
+        <input type="radio" name="rate" id="rating5" value="5" required /><label for="rating5" title="5"></label>
+        <input type="radio" name="rate" id="rating4" value="4" required /><label for="rating4" title="4"></label>
+        <input type="radio" name="rate" id="rating3" value="3" required /><label for="rating3" title="3"></label>
+        <input type="radio" name="rate" id="rating2" value="2" required /><label for="rating2" title="2"></label>
+        <input type="radio" name="rate" id="rating1" value="1" required /><label for="rating1" title="1"></label>
+
+      </div>
+
+      <div class="form-group"><button type="submit" class="btn  submitbutton">submit rating</button></div>
+
+    </form>
+  </div>
+
+
+
+  <div class="container commentcontainer" data-aos="fade-up">
+
+    <a href="{% url 'blogadd' data.id %}" style="font-size: 30px;">ADD BLOG +</a>
+    <div class="row">
+
+
+      <div class=" col-12 mt-4">
+        <form id="align-form" method="POST" class="commentform">
+          {% csrf_token %}
+          <div class="form-group">
+            <h4>Leave a comment</h4> <label for="message">Comment:</label> <textarea name="msg" id="msg" cols="30"
+              rows="5" class="form-control"></textarea>
+          </div>
+
+          <div class="form-group "> <button type="submit" id="post" class="btn">Post Comment</button> </div>
+        </form>
+      </div>
+
+
+
+
+      <div class="col-12 pb-4 pt-4">
+        <h3>Comments:</h3>
+        {% for comment in data.comment_set.all %}
+        <div class="row">
+
+
+          <div class="text-justify darker mt-4 col-12"> <img src="{{ comment.user.profile.profile_pic.url }}" alt=""
+              class="rounded-circle" width="40" height="40">
+            <h4>{{ comment.user.username }}</h4> <span>- {{comment.created_date|date:"M d, Y"}}</span> <br>
+            <div class="pt-2" style="padding-left: 4px;">
+              <p>{{ comment.comment_body }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-12 pb-4 pt-4">
+      <h3>Available Guides</h3>
+      {% for guide in guides %}
+      <div class="guideRow">
+        <div class="guidelist">
+          <img src="{{ guide.profile_pic.url }}" alt="" class="rounded-circle" width="80" height="80">
+          <a href="{% url 'index' %}">
+            <h4>{{ guide.user.username }}</h4>
+          </a>
+        </div>
+      </div>
       {% endfor %}
     </div>
 
-</div>
+  </div>
 </section>
 {% endblock %}
 
@@ -356,8 +393,7 @@ label {
 
 {% block myscript %}
 <script>
-  
- 
+
+
 </script>
 {% endblock myscript %}
-
