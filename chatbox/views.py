@@ -12,7 +12,7 @@ from .models import Room, Topic, Message, User
 # from django.views import generic
 # from django.utils.decorators import method_decorator
 from .models import Room
-# from .forms import RoomForm, UserForm
+from .forms import RoomForm, UserForm
 
 # rooms = [
 #     {'id':1, 'name':'Shivapuri Trekking!'},
