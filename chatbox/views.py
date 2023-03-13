@@ -12,7 +12,7 @@ from .models import Room, Topic, Message, User
 # from django.views import generic
 # from django.utils.decorators import method_decorator
 from .models import Room
-from .forms import RoomForm, UserForm
+# from .forms import RoomForm, UserForm
 
 # rooms = [
 #     {'id':1, 'name':'Shivapuri Trekking!'},
@@ -20,53 +20,52 @@ from .forms import RoomForm, UserForm
 #     {'id':3, 'name':'Kathmandu Durbarsquare Visit'},
 # ] 
 
+# def loginPage(request):
+#     page = 'login'
+#     if request.user.is_authenticated:
+#         return redirect('index')
 
-def loginPage(request):
-    page = 'login'
-    if request.user.is_authenticated:
-        return redirect('index')
+#     if request.method == 'POST':
+#         email = request.POST.get('email').lower()
+#         password = request.POST.get('password')
 
-    if request.method == 'POST':
-        email = request.POST.get('email').lower()
-        password = request.POST.get('password')
+#         try:
+#             user = User.objects.get(email=email)
+#         except:
+#             messages.error(request, 'User does not exist')
 
-        try:
-            user = User.objects.get(email=email)
-        except:
-            messages.error(request, 'User does not exist')
+#         user = authenticate(request, email=email, password=password)
 
-        user = authenticate(request, email=email, password=password)
+#         if user is not None:
+#             login(request, user)
+#             return redirect('index')
+#         else:
+#             messages.error(request, 'Username OR password does not exit')
 
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.error(request, 'Username OR password does not exit')
-
-    context = {'page': page}
-    return render(request, 'chatbox/login_register.html', context)
-
-
-def logoutUser(request):
-    logout(request)
-    return redirect('index')
+#     context = {'page': page}
+#     return render(request, 'chatbox/login_register.html', context)
 
 
-def registerPage(request):
-    # form = UserCreationForm()
+# def logoutUser(request):
+#     logout(request)
+#     return redirect('login')
 
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.username.lower()
-            user.save()
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.error(request, 'An error occurred during registration')
 
-    return render(request, 'chatbox/login_register.html', {'form': form})
+# def registerPage(request):
+#     # form = UserCreationForm()
+
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             user.username = user.username.lower()
+#             user.save()
+#             login(request, user)
+#             return redirect('index')
+#         else:
+#             messages.error(request, 'An error occurred during registration')
+
+#     return render(request, 'chatbox/login_register.html', {'form': form})
 
 
 def home(request):

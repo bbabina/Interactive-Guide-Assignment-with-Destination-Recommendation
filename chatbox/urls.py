@@ -8,9 +8,9 @@ from django.urls import include
 urlpatterns = [
         # path('main/', include('main.urls')),
 
-    path('login/', views.loginPage, name="login"),
-    path('logout/', views.logoutUser, name="logout"),
-    path('register/', views.registerPage, name="register"),
+    # path('login/', views.loginPage, name="login"),
+    # path('logout/', views.logoutUser, name="logout"),
+    # path('register/', views.registerPage, name="register"),
 
     path('', views.home, name='index'),
     path('room/<str:pk>/', views.room, name="room"),
