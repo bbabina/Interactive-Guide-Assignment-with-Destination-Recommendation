@@ -1,17 +1,6 @@
 {% extends 'mains.html' %}
 
-
 {% block content %}
-<form method="post" action="">
-    {% csrf_token %}
-    <p>Are you sure you want to delete "{{obj}}</p>"
-    <a href="{{request.META.HTTP_REFERER}}"> Go back </a>
-    <input type="submit" value="Confirm"/>
-</form>
-{% endblock content %}
-
-
-{% comment %} {% block content %}
 <main class="delete-item layout">
     <div class="container">
         <div class="layout__box">
@@ -45,4 +34,4 @@
         </div>
     </div>
 </main>
-{% endblock content %} {% endcomment %}
+{% endblock content %}

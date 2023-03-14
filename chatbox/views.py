@@ -193,7 +193,7 @@ def deleteMessage(request,pk):
 
     if request.method == 'POST':
         message.delete()
-        return redirect ('home')
+        return redirect ('index')
 
     return render(request, 'chatbox/delete.html', {'obj':message})
 
