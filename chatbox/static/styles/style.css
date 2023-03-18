@@ -1,15 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
 :root {
-  --color-main: #71c6dd;
+  --color-main: #cda45e;
   --color-main-light: #e1f6fb;
-  --color-dark: #3f4156;
-  --color-dark-medium: #51546e;
+  /* --color-dark: #3f4156; */
+  --color-dark: black;
+  /* --color-dark-medium: #51546e; */
+  --color-dark-medium: #222;
+  /*searchbar*/
   --color-dark-light: #696d97;
+  --color-dark-light: #cda45e;
   --color-light: #e5e5e5;
   --color-gray: #8b8b8b;
   --color-light-gray: #b2bdbd;
-  --color-bg: #2d2d39;
+  --color-bg: #222;
+  /* --color-bg: #2d2d39; */
   --color-success: #5dd693;
   --color-error: #fc4b0b;
 }
@@ -1114,7 +1119,7 @@ a {
 .room__message>form>input {
   resize: none;
   background-color: var(--color-dark-light);
-  color: var(--color-light);
+  color: black;
   border: none;
   outline: none;
   border-radius: 0.7rem;
@@ -1128,7 +1133,7 @@ a {
 }
 
 .room__message>form>input::placeholder {
-  color: var(--color-light-gray);
+  color: black;
 }
 
 .participants__top span {
