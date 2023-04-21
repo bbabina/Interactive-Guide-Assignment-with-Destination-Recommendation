@@ -243,9 +243,11 @@
     border: 1px solid #ecb21f;
     border-radius: 13px;
     margin: 20px 0 20px 0;
+    padding: 10px 15px;
+
   }
 
-  .guidelist {
+  /* .guidelist {
     display: flex;
 
     gap: 2rem;
@@ -253,6 +255,37 @@
     text-transform: capitalize;
     text-align: center;
     align-items: center;
+  } */
+
+  .guideTitle {
+    display: flex;
+  }
+
+  .guideHeading {
+    width: 100%;
+    margin: 0 20px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .guidebutton {
+
+    padding: 10px 15px;
+    text-align: center;
+    background-color: #cda45e;
+    border-color: white;
+    color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 13px;
+  }
+
+  #guideDetails {
+    display: none;
+    margin-left: 27%;
+    text-transform: capitalize;
   }
 </style>
 
@@ -372,7 +405,7 @@
     <div class="col-12 pb-4 pt-4">
       <h3>Available Guides</h3>
       {% for guide in guides %}
-      <div class="guideRow">
+      <!-- <div class="guideRow">
         <div class="guidelist">
           <img src="{{ guide.profile_pic.url }}" alt="" class="rounded-circle" width="80" height="80">
           <a href="{% url 'index' %}">
@@ -380,41 +413,64 @@
           </a>
           <div class="text-gray-400">
 
-            {% comment %} new changes {% endcomment %}
-            <div class="grid md:grid-cols-1 text-sm">
-                <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">First Name</div>
-                    <div class="px-4 py-2">{{guide.user.first_name}}</div>
-                </div>
-                
-                <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">Last Name</div>
-                    <div class="px-4 py-2">{{guide.user.last_name}}</div>
-                </div>
-                <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">Gender</div>
-                    <div class="px-4 py-2">{{guide.user.profile.sex}}</div>
-                </div>
-                <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">Age</div>
-                    <div class="px-4 py-2">{{guide.user.profile.age}}</div>
-                </div>
-                <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">Contact No.</div>
-                    <div class="px-4 py-2">{{guide.user.profile.phone_number}}</div>
-                </div>
-                <div class="grid grid-cols-2">
-                    <div class="px-4 py-2 font-semibold">Email</div>
-                    <div class="px-4 py-2">{{guide.user.email}}</div>
-                </div>
-                {% comment %} new changes ends {% endcomment %}
+          {% comment %} new changes {% endcomment %}
+          <div class="grid md:grid-cols-1 text-sm">
+            <div class="grid grid-cols-2">
+              <div class="px-4 py-2 font-semibold">First Name</div>
+              <div class="px-4 py-2">{{guide.user.first_name}}</div>
+            </div>
 
+            <div class="grid grid-cols-2">
+              <div class="px-4 py-2 font-semibold">Last Name</div>
+              <div class="px-4 py-2">{{guide.user.last_name}}</div>
+            </div>
+            <div class="grid grid-cols-2">
+              <div class="px-4 py-2 font-semibold">Gender</div>
+              <div class="px-4 py-2">{{guide.user.profile.sex}}</div>
+            </div>
+            <div class="grid grid-cols-2">
+              <div class="px-4 py-2 font-semibold">Age</div>
+              <div class="px-4 py-2">{{guide.user.profile.age}}</div>
+            </div>
+            <div class="grid grid-cols-2">
+              <div class="px-4 py-2 font-semibold">Contact No.</div>
+              <div class="px-4 py-2">{{guide.user.profile.phone_number}}</div>
+            </div>
+            <div class="grid grid-cols-2">
+              <div class="px-4 py-2 font-semibold">Email</div>
+              <div class="px-4 py-2">{{guide.user.email}}</div>
+            </div>
+            {% comment %} new changes ends {% endcomment %}
+
+          </div>
+        </div>
+        {% endfor %}
+      </div> -->
+      {% for guide in guides %}
+      <div class="guideRow">
+        <div class="guideTitle">
+          <div class="guideImage">
+            <img src="{{ guide.profile_pic.url }}" alt="" class="rounded-circle" width="80" height="80">
+          </div>
+          <div class="guideHeading">
+            <h4>{{ guide.user.username }}</h4>
+            <button class="guidebutton" onclick=showDetails()>Details</button>
+          </div>
+        </div>
+        <div id="guideDetails">
+          <div>
+            <p>First Name: {{guide.user.first_name}}</p>
+            <p>Last Name: {{guide.user.last_name}}</p>
+            <p>Gender: {{guide.user.profile.sex}}</p>
+            <p>Age: {{guide.user.profile.age}}</p>
+            <p>Contact No: {{guide.user.profile.phone_number}}</p>
+            <p>Email: {{guide.user.email}}</p>
+          </div>
         </div>
       </div>
       {% endfor %}
-    </div>
 
-  </div>
+    </div>
 </section>
 {% endblock %}
 
@@ -424,7 +480,16 @@
 
 {% block myscript %}
 <script>
-
-
+  const guideDetailContainter = document.getElementById("guideDetails");
+  let isClicked = true
+  let showDetails = function () {
+    if (isClicked) {
+      guideDetailContainter.style.display = "block";
+      isClicked = false
+    } else {
+      guideDetailContainter.style.display = "none";
+      isClicked = true;
+    }
+  }
 </script>
 {% endblock myscript %}
