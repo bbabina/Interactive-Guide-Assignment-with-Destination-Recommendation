@@ -378,6 +378,37 @@
           <a href="{% url 'index' %}">
             <h4>{{ guide.user.username }}</h4>
           </a>
+          <div class="text-gray-400">
+
+            {% comment %} new changes {% endcomment %}
+            <div class="grid md:grid-cols-1 text-sm">
+                <div class="grid grid-cols-2">
+                    <div class="px-4 py-2 font-semibold">First Name</div>
+                    <div class="px-4 py-2">{{guide.user.first_name}}</div>
+                </div>
+                
+                <div class="grid grid-cols-2">
+                    <div class="px-4 py-2 font-semibold">Last Name</div>
+                    <div class="px-4 py-2">{{guide.user.last_name}}</div>
+                </div>
+                <div class="grid grid-cols-2">
+                    <div class="px-4 py-2 font-semibold">Gender</div>
+                    <div class="px-4 py-2">{{guide.user.profile.sex}}</div>
+                </div>
+                <div class="grid grid-cols-2">
+                    <div class="px-4 py-2 font-semibold">Age</div>
+                    <div class="px-4 py-2">{{guide.user.profile.age}}</div>
+                </div>
+                <div class="grid grid-cols-2">
+                    <div class="px-4 py-2 font-semibold">Contact No.</div>
+                    <div class="px-4 py-2">{{guide.user.profile.phone_number}}</div>
+                </div>
+                <div class="grid grid-cols-2">
+                    <div class="px-4 py-2 font-semibold">Email</div>
+                    <div class="px-4 py-2">{{guide.user.email}}</div>
+                </div>
+                {% comment %} new changes ends {% endcomment %}
+
         </div>
       </div>
       {% endfor %}
