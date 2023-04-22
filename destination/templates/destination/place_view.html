@@ -311,7 +311,7 @@
   }
 
   .guideRow.active #guideDetails {
-    height: 200px;
+    height: 225px;
   }
 </style>
 
@@ -485,12 +485,12 @@
         </div>
         <div id="guideDetails">
           <div>
-            <p>First Name: {{guide.user.first_name}}</p>
-            <p>Last Name: {{guide.user.last_name}}</p>
+            <p>Name: {{guide.user.first_name}} {{guide.user.last_name}}</p>
             <p>Gender: {{guide.user.profile.sex}}</p>
             <p>Age: {{guide.user.profile.age}}</p>
             <p>Contact No: {{guide.user.profile.phone_number}}</p>
-            <p>Email: {{guide.user.email}}</p>
+            <!-- <p>Email: {{guide.user.email}}</p> -->
+            <button class="guidebutton">Email</button>
           </div>
         </div>
       </div>
