@@ -13,7 +13,7 @@ class UsercreateForm(UserCreationForm):
 
 
 class profileform(ModelForm):
-    place = forms.ModelChoiceField(queryset=Places.objects.all(), widget=forms.Select)
+    place = forms.ModelChoiceField(queryset=Places.objects.all(), widget=forms.Select, required=False)
     class Meta:
         model= Profile
         fields= ['middle_name','sex','age','phone_number','nationality','profile_pic','is_guide','place']
@@ -21,7 +21,6 @@ class profileform(ModelForm):
             'is_guide': 'Become a guide',
             'place':'Select destination'
         }
-        
         
 class userupdateform(ModelForm):
     first_name = forms.CharField(required=True)
